@@ -8,9 +8,9 @@ module AcidicJob
       extend ActiveSupport::Concern
 
       def deliver_acidicly(_options = {})
-        job_class = ::ActionMailer::MailDeliveryJob
-        job_args = [@mailer_class.name, @action.to_s, "deliver_now", @params, *@args]
-        job = job_class.new(job_args)
+        job_class = ::HoggoMailDeliveryJob
+        job_args = [@mailer_class.name, @action.to_s, "deliver_now"]
+        job = job_class.new(*job_args, args: @args, params: @params)
 
         AcidicJob::Run.stage!(job)
       end
