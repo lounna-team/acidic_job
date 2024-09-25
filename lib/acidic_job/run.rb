@@ -22,7 +22,7 @@ module AcidicJob
 
     self.table_name = "acidic_job_runs"
 
-    validates :idempotency_key, presence: true
+    validates :idempotency_key, presence: true, uniqueness: true
     validate :not_awaited_but_unstaged
 
     def self.clear_finished
