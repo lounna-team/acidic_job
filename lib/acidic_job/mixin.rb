@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 require "active_support/concern"
+require "acidic_job/perform_acidicly"
+require "acidic_job/perform_wrapper"
 
 module AcidicJob
   module Mixin
